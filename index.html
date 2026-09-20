@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mộc Nhiên | Không gian thư giãn từ thiên nhiên</title>
+    <link rel="icon" href="./asset/images/icon-la.svg">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <video id="video-nen" class="video-nen" autoplay muted loop playsinline>
+        <source src="./asset/video/thac-nuoc-hd.webm" type="video/webm">
+    Trình duyệt không hỗ trợ Video.
+    </video>
+    <div class="lop-phu"></div>
+    <main class="trang-chinh">
+        <header class="thanh-dieu-huong">
+            <a href="#trang-chu" class="thuong-hieu">
+                <img src="./asset/images/icon-la.svg" alt="Biểu tượng chiếc lá">
+                <span>Mộc Nhiên</span>
+            </a>
+            <nav class="menu">
+                <a href="#trang-chu">Trang chủ</a>
+                <a href="#trai-nghiem">Trải nghiệm</a>
+                <a href="#khong-gian">Không gian</a>
+                <a href="#lien-he">Liên hệ</a>
+            </nav>
+        </header>
+        <section class="hero" id="trang-chu">
+            <p class="nhan">
+                ÂM THANH NGUYÊN BẢN TỪ THIÊN NHIÊN
+            </p>
+            <h1>
+                Chạm vào nhịp thở của thiên nhiên
+            </h1>
+            <p id="mo-ta-canh">
+                Tạm rời những ồn ào, lắng nghe tiếng nước và dành một khoảng lặng cho chính mình.
+            </p>
+            <div class="hero-action">
+                <a href="#trai-nghiem" class="nut nut-chinh">
+                    Bắt đầu trải nghiệm
+                </a>
+                <a href="#khong-gian" class="nut nut-phu">
+                    Khám phá không gian
+                </a>
+            </div>
+        </section>
+        <section id="trai-nghiem" class="gioi-thieu-phan">
+            <p class="nhan">
+                KHOẢNG LẶNG DÀNH CHO BẠN
+            </p>
+            <h2>
+                Một phút sống chậm
+            </h2>
+            <p>
+                Quan sát, lắng nghe và chọn sắc độ phù hợp với tâm trạng hiện tại.
+            </p>
+        </section>
+        <section id="khong-gian" class="bang-dieu-khien">
+            <article class="the-noi-dung khu-quan-sat">
+                <p class="so-thu-tu">
+                    01
+                </p>
+                <h2>
+                    Thả lỏng ánh nhìn
+                </h2>
+                <div class="vong-tron">
+                    <span>Chậm lại</span>
+                </div>
+                <p>
+                    Nhìn vào chuyển động nhẹ nhàng và để cơ thể dần thư giãn
+                </p>
+            </article>
+            <article class="the-noi-dung khu-am-thanh">
+                <p class="so-thu-tu">
+                    02
+                </p>
+                <h2>
+                    Lắng nghe thác nước
+                </h2>
+                <p>
+                    Dòng nước được nối liền nhẹ nhàng để không gian luôn thư thái và không bị ngắt quãng
+                </p>
+                <audio preload="auto" id="am-thanh-a">
+                    <source src="./asset/audio/thac-nuoc-lien-tuc.ogg" type="/audio/ogg">
+                </audio>
+                <audio preload="auto" id="am-thanh-b">
+                    <source src="./asset/audio/draphoto-mua-canh-thac-nuoc-149352.mp3" type="/audio/ogg">
+                </audio>
+                <button id="nut-am-thanh" class="nut nut-chinh" onclick="batTatAmThanh()">
+                    ▶ Bật tiếng thác nước
+                </button>
+                <label for="thanh-am-luong" class="am-luong">
+                    Âm lượng
+                    <input
+                        id="thanh-am-luong"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="0.5"
+                        oninput="doiAmLuong(this.value)"
+                    />
+                </label>
+            </article>
+            <article class="the-noi-dung khu-khung-canh">
+                <p class="so-thu-tu">
+                    03
+                </p>
+                <h2>
+                    Chọn sắc độ không gian
+                </h2>
+                <p>
+                    Mỗi sắc độ mang đến một cảm khác khác nhau cho khoảnh khắc của bạn
+                </p>
+                <div class="nhom-nut">
+                    <button class="nut nut-canh dang-chon" data-che-do="tu-nhien" onclick="">
+                        Tự nhiên
+                    </button>
+                    <button class="nut nut-canh dang-chon" data-che-do="trong-treo" onclick="">
+                        Trong trẻo
+                    </button>
+                    <button class="nut nut-canh dang-chon" data-che-do="diu-nhe" onclick="">
+                        Dịu nhẹ
+                    </button>
+                </div>
+            </article>
+        </section>
+
+        <footer id="lien-he" class="chan-trang">
+            <div>
+                <p class="ten-chan-trang">Mộc Nhiên</p>
+                <p>
+                    Mang thiên nhiên đến gần hơn trong từng phút nghỉ ngơi.
+                </p>
+            </div>
+            <p>
+                © 2026 Mộc Nhiên. Bình yên bắt đầu từ một nhịp chậm.
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
