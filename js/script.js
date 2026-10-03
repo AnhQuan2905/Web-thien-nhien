@@ -29,30 +29,38 @@ let boDemChuyenAm;
 // }
 
 /* ham batTatAmThanh: kiem tra va thay doi trang thai am thanh */
+let lanPhat = 0;
 async function batTatAmThanh() {
-    if (!dangBatAmThanh) {
-        dangBatAmThanh = true;
-        amDangPhat.currentTime = 0;
-        amDangPhat.volume = amLuong;
-        // Bắt lỗi nếu play() bị hủy hoặc bị trình duyệt chặn
-        try {
-            await amDangPhat.play();
-            batDauKiemTraAmThanh();
-            nutAmThanh.textContent = "II Tạm dừng âm thanh";
-        } catch (error) {
-            // Khi bị gián đoạn bởi pause(), đổi lại trạng thái đúng cho giao diện
-            dangBatAmThanh = false;
-            console.log("Tiến trình play() bị dừng ngắt:", error);
-        }
-    } else {
-        tatAmThanh();
-        nutAmThanh.textContent = "► Bật tiếng thác nước";
-    }
+    if (dangBatAmThanh) {
+        tatAmThanh();
+        return;
+    }
+    dangBatAmThanh = true;
+    const lanHienTai = ++lanPhat;
+    if (amDangPhat.ended) amDangPhat.currentTime = 0;
+    amDangPhat.volume = amLuong;
+    nutAmThanh.textContent = "Ⅱ Tạm dừng âm thanh";
+    try {
+        await amDangPhat.play();
+        if (lanHienTai !== lanPhat || !dangBatAmThanh) return;
+        batDauKiemTraAmThanh();
+    } catch (error) {
+        if (lanHienTai !== lanPhat) return;
+        tatAmThanh();
+        console.error("Không thể phát âm thanh:", error);
+    }
 }
-/* ham tatAmThanh: */
 function tatAmThanh() {
-    dangBatAmThanh = false; // Cập nhật lại biến cờ
-    amDangPhat.pause();
+    dangBatAmThanh = false;
+    lanPhat++;
+    clearInterval(boDemKiemTra);
+    clearInterval(boDemChuyenAm);
+    amThanhA.pause();
+    amThanhB.pause();
+    dangChuyenAm = false;
+    amDangPhat.volume = amLuong;
+    amKeTiep.volume = 0;
+    nutAmThanh.textContent = "▶ Bật tiếng thác nước";
 }
 
 /* ham doiAmLuong: cho phep minh thay doi gia tri gan voi am luong cua am thanh */
